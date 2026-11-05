@@ -14,11 +14,13 @@ func (m Model) View() tea.View {
 	)
 
 	status := statusStyle.Render(m.status)
-	return tea.NewView(fmt.Sprintf(
+	v := tea.NewView(fmt.Sprintf(
 		"%s\n%s\n\n%s\n%s",
 		header,
 		m.list.View(),
 		status,
 		footer,
 	))
+	v.AltScreen = true
+	return v
 }
